@@ -1,0 +1,23 @@
+- hosts: all
+  become: true
+
+#  vars:
+#    redmine_port: 3000
+
+  tasks:
+    - name: cp env
+      template:
+        src: ./templates/.env.redmine.j2
+        dest: "{{ redmine_env_file }}"
+        mode: '660'
+      tags: deploy
+
+    - name: up redmine
+      community.docker.docker_container:
+        name: redmine
+        image: redmine
+#        ports: [3000:3000]
+        ports:
+          - "{{ redmine_port }}:3000"
+        env_file: "{{ redmine_env_file }}"
+      tags: deploy
