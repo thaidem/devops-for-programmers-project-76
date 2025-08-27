@@ -6,11 +6,11 @@ redmine_container_name: redmine_app
 redmine_image: bitnami/redmine:latest
 redmine_env_file: /opt/redmine/.env
 
-db_host: localhost
-db_port: 5432
-db_name: some-postgres
-db_user: redmine
-db_password: secret
+db_host: rc1a-6h87tv5ve3135kj9.mdb.yandexcloud.net
+db_port: 6432
+db_name: db
+db_user: dem
+db_password: 19081969
 #db_sslmode: verify-full
 #db_sslrootcert: /root/.postgresql/root.crt
 
