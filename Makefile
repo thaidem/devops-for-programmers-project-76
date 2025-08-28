@@ -4,14 +4,11 @@ ping:
 install-role:
 	ansible-galaxy install -r requirements.yml
 
-install-pip:
-	ansible-playbook playbook.yml -i inventory.ini -u root -v
-
 create-vault:
-	ansible-vault encrypt group_vars/all/vault.yml
+	ansible-vault encrypt group_vars/webservers/vault.yml
 
 edit-vault:
-	ansible-vault edit group_vars/all/vault.yml
+	ansible-vault edit group_vars/webservers/vault.yml
 
 setup:
 	ansible-playbook setup.yml -i inventory.ini --vault-password-file .pass -v

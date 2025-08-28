@@ -18,21 +18,11 @@
           - "{{ redmine_port }}:3000"
         env_file: .env
         state: started
-#        restart_policy: always
       tags: deploy
-
 
 - hosts: webservers
   become: true
-#  tasks:
-#    - name: Import the Datadog Agent role from the Datadog collection
-#      import_role:
-#        name: datadog.dd.agent
+
   roles:
-    - role: datadog.dd
-#      import_role:
-#        name: datadog.dd.agent
-#  vars:
-#    datadog_api_key: "51814aabde9899856ae17038db96a59d"
-#    datadog_site: "datadoghq.eu"
+    - role: datadog.dd.agent
       tags: monitoring
