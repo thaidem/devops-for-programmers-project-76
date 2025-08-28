@@ -3,3 +3,13 @@ db_port: 6432
 db_name: db1
 db_user: user1
 db_password: "{{ vault_db_password }}"
+
+datadog_api_key: "{{ vault_datadog_key }}"
+datadog_site: "datadoghq.eu"
+datadog_apm_instrumentation_enabled: "all"
+datadog_checks:
+  http_check:
+    init_config:
+    instances:
+      - name: check my site
+        url: http://localhost
