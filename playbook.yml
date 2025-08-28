@@ -8,16 +8,19 @@
     - name: cp env
       template:
         src: ./templates/.env.redmine.j2
-        dest: "{{ redmine_env_file }}"
-        mode: '660'
+        dest: .env
+        mode: '0644'
       tags: deploy
 
     - name: up redmine
       community.docker.docker_container:
         name: redmine
         image: redmine
+        restart_policy: unless-stopped
 #        ports: [3000:3000]
         ports:
           - "{{ redmine_port }}:3000"
-        env_file: "{{ redmine_env_file }}"
+        env_file: .env
+        state: started
+#        restart_policy: always
       tags: deploy

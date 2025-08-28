@@ -1,8 +1,0 @@
-all:
-  children:
-    webservers:
-      hosts:
-        web1:
-           ansible_host: 158.160.129.31
-        web2:
-           ansible_host: 51.250.40.170
