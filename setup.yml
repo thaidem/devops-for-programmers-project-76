@@ -1,9 +1,10 @@
 - hosts: all
   become: true
-  roles:
-    - role: geerlingguy.pip
-      vars:
-        pip_install_packages:
-          - name: docker
-            state: present
 
+  roles:
+    - geerlingguy.pip
+
+  tasks:
+    - name: install pip docker
+      ansible.builtin.pip:
+        name: docker

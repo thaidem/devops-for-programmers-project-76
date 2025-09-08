@@ -1,4 +1,5 @@
-- hosts: all
+- name: Deploying redmine
+  hosts: all
   become: true
 
   tasks:
@@ -20,9 +21,30 @@
         state: started
       tags: deploy
 
-- hosts: webservers
+- name: Install Datadog monitoring
+  hosts: webservers
   become: true
+  vars:
+    datadog_api_key: "{{ datadog_api_key }}"
+    datadog_site: "datadoghq.eu"
 
-  roles:
-    - role: datadog.dd.agent
-      tags: monitoring
+#  roles:
+#    - role: datadog.dd
+
+  tasks:
+    - name: Install DD
+      import_role:
+        name: datadog.dd
+
+    - name: Copy configuration file
+      ansible.builtin.template:
+        src: ./templates/datadog.yaml.j2
+        dest: /etc/datadog-agent/conf.d/http_check.d/conf.yaml
+        owner: root
+        group: root
+        mode: u=rw,g=r,o=r
+
+    - name: Restart agent
+      ansible.builtin.service:
+        name: datadog-agent
+        state: restarted

@@ -1,0 +1,9 @@
+- name: Remove app containers
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Remove container
+      community.docker.docker_container:
+        name: redmine
+        state: absent
