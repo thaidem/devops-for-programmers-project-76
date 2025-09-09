@@ -1,7 +1,6 @@
 roles:
   - name: geerlingguy.pip
   - name: geerlingguy.docker
-  - name: datadog.dd
-    src: https://github.com/ansible-collections/Datadog
+  - name: datadog.datadog
 collections:
   - name: community.docker
