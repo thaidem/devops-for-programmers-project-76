@@ -11,7 +11,7 @@
         src: ./templates/.env.redmine.j2
         dest: .env
         mode: '0644'
-      tags: deploy
+#      tags: deploy
 
     - name: up redmine
       community.docker.docker_container:
@@ -22,7 +22,7 @@
           - "{{ redmine_port }}:3000"
         env_file: .env
         state: started
-      tags: deploy
+#      tags: deploy
 
 - name: Install Datadog monitoring
   hosts: webservers
