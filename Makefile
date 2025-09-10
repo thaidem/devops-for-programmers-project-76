@@ -14,7 +14,7 @@ setup:
 	ansible-playbook setup.yml -i inventory.ini --vault-password-file .pass -v
 
 deploy:
-	ansible-playbook playbook.yml -i inventory.ini -t deploy --vault-password-file .pass -v
+	ansible-playbook playbook.yml -i inventory.ini --vault-password-file .pass -v
 
 stop-app:
 	ansible-playbook stop_app.yaml -i inventory.ini --vault-password-file .pass -v
