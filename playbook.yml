@@ -29,7 +29,7 @@
   tasks:
     - name: Install DD
       import_role:
-        name: datadog.dd
+        name: datadog.datadog
 
 
     - name: Copy configuration file
