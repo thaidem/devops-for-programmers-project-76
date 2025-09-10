@@ -5,3 +5,13 @@ make ping - проверить доступность серверов
 make install-role - установить роли
 
 make setup - установить docker
+
+create-vault - создать секрет
+
+edit-vault - редактировать секрет
+
+deploy - задеплоить redmine and datadog
+
+stop-app - остановить приложение
+
+delete-app - удалить приложение
