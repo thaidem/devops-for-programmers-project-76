@@ -1,6 +1,9 @@
 - name: Deploying redmine
   hosts: all
   become: true
+  vars_files:
+
+    - ./group_vars/webservers/vars.yml
 
   tasks:
     - name: cp env
