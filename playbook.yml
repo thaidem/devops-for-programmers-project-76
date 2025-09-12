@@ -5,6 +5,13 @@
   vars_files:
     - ./group_vars/webservers/vars.yml
 
+  roles:
+    - role: geerlingguy.pip
+      vars:
+        pip_install_packages:
+          - name: docker
+            state: present
+
   tasks:
     - name: cp env
       ansible.builtin.template:
