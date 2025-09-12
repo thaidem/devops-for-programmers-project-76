@@ -13,13 +13,13 @@
             state: present
 
   tasks:
-    - name: cp env
+    - name: Cp env
       ansible.builtin.template:
         src: ./templates/.env.redmine.j2
         dest: .env
         mode: '0644'
 
-    - name: up redmine
+    - name: Up redmine
       community.docker.docker_container:
         name: redmine
         image: redmine
@@ -36,7 +36,7 @@
 
   tasks:
     - name: Install DD
-      import_role:
+      ansible.builtin.import_role:
         name: datadog.datadog
 
 
